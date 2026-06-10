@@ -5,22 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>루미노 인테리어 — 공간이 삶을 바꿉니다</title>
 
-  <!-- Pretendard (NON-NEGOTIABLE for Korean) -->
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
-
-  <!-- Outfit for English headlines -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
 
-  <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- Iconify Solar -->
   <script src="https://code.iconify.design/3/3.1.1/iconify.min.js"></script>
-
-  <!-- Motion One -->
   <script src="https://cdn.jsdelivr.net/npm/motion@10.16.2/dist/motion.js"></script>
 
   <script>
@@ -28,16 +20,8 @@
       theme: {
         extend: {
           fontFamily: {
-            sans: ['Pretendard Variable', 'Pretendard', '-apple-system', 'BlinkMacSystemFont', 'system-ui', 'sans-serif'],
-            en: ['Outfit', 'sans-serif'],
-          },
-          colors: {
-            stone: {
-              950: '#0c0a09',
-            },
-            amber: {
-              accent: '#C8963E',
-            }
+            sans: ['Pretendard Variable','Pretendard','-apple-system','BlinkMacSystemFont','system-ui','sans-serif'],
+            en: ['Outfit','sans-serif'],
           },
         },
       },
@@ -47,67 +31,50 @@
   <style>
     :root {
       --accent: #C8963E;
-      --accent-muted: rgba(200, 150, 62, 0.12);
-      --accent-border: rgba(200, 150, 62, 0.25);
-      --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
-      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+      --accent-muted: rgba(200,150,62,0.12);
+      --accent-border: rgba(200,150,62,0.25);
+      --ease-spring: cubic-bezier(0.16,1,0.3,1);
     }
 
-    * { box-sizing: border-box; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html {
-      scroll-behavior: smooth;
-      -webkit-font-smoothing: antialiased;
-    }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
 
     body {
-      background-color: #0c0a09;
+      background: #0c0a09;
       color: #e7e5e4;
-      font-family: 'Pretendard Variable', 'Pretendard', sans-serif;
+      font-family: 'Pretendard Variable','Pretendard',sans-serif;
       word-break: keep-all;
       overflow-x: hidden;
     }
 
-    /* ── Scrollbar ── */
     ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: #0c0a09; }
     ::-webkit-scrollbar-thumb { background: #44403c; border-radius: 2px; }
 
     /* ── Typography ── */
-    .headline-xl {
-      font-family: 'Outfit', sans-serif;
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      line-height: 1.05;
-    }
-
     .headline-ko {
       font-weight: 700;
       letter-spacing: -0.03em;
       line-height: 1.2;
       word-break: keep-all;
     }
-
-    /* ── Double-Bezel Card ── */
-    .card-bezel {
-      background: linear-gradient(135deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.01) 100%);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 20px;
-      padding: 2px;
-      position: relative;
+    .headline-en {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1.05;
+    }
+    .stat-number {
+      font-family: 'Outfit', sans-serif;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      color: var(--accent);
     }
 
-    .card-bezel-inner {
-      background: linear-gradient(135deg, #1c1917 0%, #0f0e0d 100%);
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.04);
-      height: 100%;
-      padding: 28px;
-    }
-
-    /* ── Glass Navigation ── */
+    /* ── Glass Nav ── */
     .glass-nav {
-      background: rgba(12, 10, 9, 0.7);
+      background: rgba(12,10,9,0.75);
       backdrop-filter: blur(24px) saturate(180%);
       -webkit-backdrop-filter: blur(24px) saturate(180%);
       border-bottom: 1px solid rgba(255,255,255,0.06);
@@ -129,7 +96,7 @@
       text-transform: uppercase;
     }
 
-    /* ── CTA Button ── */
+    /* ── Buttons ── */
     .btn-primary {
       display: inline-flex;
       align-items: center;
@@ -147,33 +114,25 @@
       position: relative;
       overflow: hidden;
     }
-
     .btn-primary::before {
       content: '';
       position: absolute;
       inset: 0;
-      background: rgba(255,255,255,0.15);
+      background: rgba(255,255,255,0.18);
       transform: translateX(-100%);
       transition: transform 0.4s var(--ease-spring);
     }
-
     .btn-primary:hover::before { transform: translateX(0); }
-
     .btn-primary:hover {
       transform: translateY(-2px);
-      box-shadow: 0 16px 48px rgba(200, 150, 62, 0.35);
+      box-shadow: 0 16px 48px rgba(200,150,62,0.35);
     }
-
     .btn-primary .icon-wrap {
-      width: 28px;
-      height: 28px;
+      width: 28px; height: 28px;
       background: rgba(0,0,0,0.2);
       border-radius: 999px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      display: flex; align-items: center; justify-content: center;
     }
-
     .btn-secondary {
       display: inline-flex;
       align-items: center;
@@ -188,68 +147,31 @@
       cursor: pointer;
       text-decoration: none;
     }
-
     .btn-secondary:hover {
       border-color: var(--accent);
       color: var(--accent);
       transform: translateY(-2px);
     }
 
+    /* ── Double-Bezel Card ── */
+    .card-bezel {
+      background: linear-gradient(135deg,rgba(255,255,255,0.05) 0%,rgba(255,255,255,0.01) 100%);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 20px;
+      padding: 2px;
+    }
+    .card-bezel-inner {
+      background: linear-gradient(135deg,#1c1917 0%,#0f0e0d 100%);
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.04);
+      height: 100%;
+      padding: 28px;
+    }
+
     /* ── Gradient line ── */
     .gradient-line {
       height: 1px;
-      background: linear-gradient(90deg, transparent, var(--accent), transparent);
-    }
-
-    /* ── Number stat ── */
-    .stat-number {
-      font-family: 'Outfit', sans-serif;
-      font-weight: 800;
-      letter-spacing: -0.04em;
-      color: var(--accent);
-    }
-
-    /* ── Scroll reveal ── */
-    .reveal {
-      opacity: 0;
-      transform: translateY(32px);
-      transition: opacity 0.7s var(--ease-spring), transform 0.7s var(--ease-spring);
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
-
-    /* ── Hero grid lines ── */
-    .grid-overlay {
-      position: absolute;
-      inset: 0;
-      background-image:
-        linear-gradient(rgba(200,150,62,0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(200,150,62,0.04) 1px, transparent 1px);
-      background-size: 60px 60px;
-      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
-    }
-
-    /* ── Image overlay ── */
-    .img-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(12,10,9,0.95) 0%, rgba(12,10,9,0.4) 50%, rgba(12,10,9,0.2) 100%);
-    }
-
-    /* ── Bento grid ── */
-    .bento-grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      grid-template-rows: auto;
-      gap: 16px;
+      background: linear-gradient(90deg,transparent,var(--accent),transparent);
     }
 
     /* ── Tag ── */
@@ -264,12 +186,11 @@
       font-size: 11px;
       font-weight: 500;
       color: #a8a29e;
-      letter-spacing: 0.02em;
     }
 
-    /* ── Process step ── */
+    /* ── Step number ── */
     .step-number {
-      font-family: 'Outfit', sans-serif;
+      font-family: 'Outfit',sans-serif;
       font-weight: 800;
       font-size: 56px;
       letter-spacing: -0.05em;
@@ -277,9 +198,9 @@
       line-height: 1;
     }
 
-    /* ── Testimonial quote ── */
+    /* ── Quote ── */
     .quote-mark {
-      font-family: 'Outfit', sans-serif;
+      font-family: 'Outfit',sans-serif;
       font-size: 72px;
       line-height: 0.8;
       color: var(--accent);
@@ -287,19 +208,146 @@
       font-weight: 800;
     }
 
-    /* ── Mobile nav ── */
-    #mobile-menu {
-      max-height: 0;
+    /* ── Scroll reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s var(--ease-spring), transform 0.7s var(--ease-spring);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+
+    /* ── Mobile menu ── */
+    #mobile-menu { max-height: 0; overflow: hidden; transition: max-height 0.4s var(--ease-spring); }
+    #mobile-menu.open { max-height: 400px; }
+
+    /* ── Hero video ── */
+    #hero-video {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(12,10,9,0.35) 0%,
+        rgba(12,10,9,0.55) 40%,
+        rgba(12,10,9,0.90) 85%,
+        rgba(12,10,9,1) 100%
+      );
+    }
+
+    /* ── Scroll story section ── */
+    #scroll-story {
+      position: relative;
+    }
+    #scroll-story-sticky {
+      position: sticky;
+      top: 0;
+      height: 100vh;
       overflow: hidden;
-      transition: max-height 0.4s var(--ease-spring);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #scroll-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .story-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(12,10,9,0.5) 0%,
+        rgba(12,10,9,0.2) 40%,
+        rgba(12,10,9,0.6) 80%,
+        rgba(12,10,9,1) 100%
+      );
+      pointer-events: none;
+    }
+    .story-text-panel {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 60px;
+      pointer-events: none;
+    }
+    .story-label {
+      position: absolute;
+      top: 50%;
+      right: 60px;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      pointer-events: none;
     }
 
-    #mobile-menu.open {
-      max-height: 400px;
+    /* ── Progress bar ── */
+    #scroll-progress-bar {
+      position: absolute;
+      left: 0; top: 0; height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--accent), rgba(200,150,62,0.4));
+      transition: width 0.05s linear;
+      z-index: 10;
     }
 
-    @media (max-width: 768px) {
-      .bento-grid { grid-template-columns: 1fr; }
+    /* ── Interior image filter ── */
+    .interior-img {
+      filter: brightness(0.88) contrast(1.08) saturate(0.85) sepia(0.12);
+      transition: filter 0.5s ease, transform 0.7s var(--ease-spring);
+    }
+    .interior-img:hover {
+      filter: brightness(0.95) contrast(1.05) saturate(0.9) sepia(0.08);
+      transform: scale(1.03);
+    }
+
+    /* ── Warm overlay for images ── */
+    .warm-overlay::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(200,120,40,0.08) 0%, rgba(180,100,20,0.04) 100%);
+      pointer-events: none;
+    }
+
+    /* Grid overlay for hero */
+    .grid-overlay {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(200,150,62,0.03) 1px, transparent 1px),
+        linear-gradient(90deg,rgba(200,150,62,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 30%, transparent 100%);
+      pointer-events: none;
+    }
+
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(1.3); }
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes dotPulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.6); }
     }
   </style>
 </head>
@@ -311,18 +359,13 @@
 ════════════════════════════════════════ -->
 <header id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
   <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
-
-    <!-- Logo -->
     <a href="#" class="flex items-center gap-3">
       <div style="width:36px;height:36px;background:var(--accent);border-radius:10px;display:flex;align-items:center;justify-content:center;">
         <iconify-icon icon="solar:home-bold" style="color:#0c0a09;font-size:18px;"></iconify-icon>
       </div>
-      <span style="font-family:'Outfit',sans-serif;font-weight:800;font-size:20px;letter-spacing:-0.03em;color:#e7e5e4;">
-        LUMINO
-      </span>
+      <span style="font-family:'Outfit',sans-serif;font-weight:800;font-size:20px;letter-spacing:-0.03em;color:#e7e5e4;">LUMINO</span>
     </a>
 
-    <!-- Desktop Nav Links -->
     <div class="hidden md:flex items-center gap-8">
       <a href="#about" class="text-sm font-medium text-stone-400 hover:text-stone-100 transition-colors duration-200">스튜디오 소개</a>
       <a href="#services" class="text-sm font-medium text-stone-400 hover:text-stone-100 transition-colors duration-200">서비스</a>
@@ -331,33 +374,27 @@
       <a href="#testimonials" class="text-sm font-medium text-stone-400 hover:text-stone-100 transition-colors duration-200">고객 후기</a>
     </div>
 
-    <!-- CTA + Mobile Toggle -->
     <div class="flex items-center gap-4">
       <a href="#contact" class="hidden md:inline-flex btn-primary text-sm px-5 py-3">
         무료 상담 신청
-        <span class="icon-wrap">
-          <iconify-icon icon="solar:arrow-right-bold" style="font-size:14px;"></iconify-icon>
-        </span>
+        <span class="icon-wrap"><iconify-icon icon="solar:arrow-right-bold" style="font-size:14px;"></iconify-icon></span>
       </a>
-      <button id="menu-toggle" class="md:hidden text-stone-400 hover:text-stone-100 transition-colors" aria-label="메뉴 열기">
+      <button id="menu-toggle" class="md:hidden text-stone-400 hover:text-stone-100 transition-colors" aria-label="메뉴">
         <iconify-icon id="menu-icon" icon="solar:hamburger-menu-linear" style="font-size:24px;"></iconify-icon>
       </button>
     </div>
   </nav>
 
-  <!-- Mobile Menu -->
   <div id="mobile-menu" class="md:hidden px-6 pb-4 border-t border-white/5">
     <div class="pt-4 flex flex-col gap-4">
-      <a href="#about" class="text-sm font-medium text-stone-400 hover:text-stone-100 transition-colors py-2 border-b border-white/5">스튜디오 소개</a>
-      <a href="#services" class="text-sm font-medium text-stone-400 hover:text-stone-100 transition-colors py-2 border-b border-white/5">서비스</a>
-      <a href="#portfolio" class="text-sm font-medium text-stone-400 hover:text-stone-100 transition-colors py-2 border-b border-white/5">포트폴리오</a>
-      <a href="#process" class="text-sm font-medium text-stone-400 hover:text-stone-100 transition-colors py-2 border-b border-white/5">진행 방식</a>
+      <a href="#about"        class="text-sm font-medium text-stone-400 hover:text-stone-100 transition-colors py-2 border-b border-white/5">스튜디오 소개</a>
+      <a href="#services"     class="text-sm font-medium text-stone-400 hover:text-stone-100 transition-colors py-2 border-b border-white/5">서비스</a>
+      <a href="#portfolio"    class="text-sm font-medium text-stone-400 hover:text-stone-100 transition-colors py-2 border-b border-white/5">포트폴리오</a>
+      <a href="#process"      class="text-sm font-medium text-stone-400 hover:text-stone-100 transition-colors py-2 border-b border-white/5">진행 방식</a>
       <a href="#testimonials" class="text-sm font-medium text-stone-400 hover:text-stone-100 transition-colors py-2 border-b border-white/5">고객 후기</a>
       <a href="#contact" class="btn-primary text-sm justify-center mt-2">
         무료 상담 신청
-        <span class="icon-wrap">
-          <iconify-icon icon="solar:arrow-right-bold" style="font-size:14px;"></iconify-icon>
-        </span>
+        <span class="icon-wrap"><iconify-icon icon="solar:arrow-right-bold" style="font-size:14px;"></iconify-icon></span>
       </a>
     </div>
   </div>
@@ -365,28 +402,31 @@
 
 
 <!-- ════════════════════════════════════════
-     HERO
+     HERO — VIDEO BACKGROUND
 ════════════════════════════════════════ -->
 <section id="hero" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
 
-  <!-- Background image -->
-  <div class="absolute inset-0">
-    <img
-      src="https://picsum.photos/1920/1080?random=10"
-      alt="루미노 인테리어 대표 시공 현장"
-      class="w-full h-full object-cover"
-    />
-    <div class="img-overlay"></div>
-  </div>
+  <!-- Video background -->
+  <video
+    id="hero-video"
+    src="assets/hero.mp4"
+    poster="assets/hero-poster.webp"
+    autoplay
+    muted
+    loop
+    playsinline
+    preload="auto"
+    aria-hidden="true"
+  ></video>
 
-  <!-- Grid overlay -->
+  <div class="hero-overlay"></div>
   <div class="grid-overlay"></div>
 
-  <!-- Radial glow -->
-  <div style="position:absolute;top:30%;left:20%;width:600px;height:600px;background:radial-gradient(circle,rgba(200,150,62,0.08) 0%,transparent 70%);pointer-events:none;"></div>
+  <!-- Accent glow -->
+  <div style="position:absolute;top:30%;left:15%;width:700px;height:500px;background:radial-gradient(ellipse,rgba(200,150,62,0.07) 0%,transparent 65%);pointer-events:none;z-index:1;"></div>
 
   <!-- Content -->
-  <div class="relative z-10 max-w-7xl mx-auto px-6 py-24">
+  <div class="relative z-10 max-w-7xl mx-auto px-6 py-28">
     <div class="max-w-3xl">
 
       <div class="accent-pill mb-8 reveal" id="hero-pill">
@@ -409,31 +449,22 @@
       <div class="flex flex-wrap gap-4 reveal reveal-delay-3" id="hero-cta">
         <a href="#contact" class="btn-primary">
           무료 상담 신청
-          <span class="icon-wrap">
-            <iconify-icon icon="solar:arrow-right-bold" style="font-size:14px;"></iconify-icon>
-          </span>
+          <span class="icon-wrap"><iconify-icon icon="solar:arrow-right-bold" style="font-size:14px;"></iconify-icon></span>
         </a>
-        <a href="#portfolio" class="btn-secondary">
-          <iconify-icon icon="solar:gallery-bold" style="font-size:18px;"></iconify-icon>
-          포트폴리오 보기
+        <a href="#scroll-story" class="btn-secondary">
+          <iconify-icon icon="solar:play-circle-bold" style="font-size:18px;"></iconify-icon>
+          공간 스토리 보기
         </a>
       </div>
 
     </div>
   </div>
 
-  <!-- Scroll indicator -->
-  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
-    <span class="text-xs text-stone-400 tracking-widest uppercase">Scroll</span>
-    <div style="width:1px;height:40px;background:linear-gradient(to bottom,var(--accent),transparent);animation:scrollPulse 2s ease-in-out infinite;"></div>
+  <!-- Scroll down indicator -->
+  <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50 z-10">
+    <span class="text-xs text-stone-400 tracking-widest uppercase font-medium">Scroll</span>
+    <div style="width:1px;height:44px;background:linear-gradient(to bottom,var(--accent),transparent);animation:scrollPulse 2s ease-in-out infinite;"></div>
   </div>
-
-  <style>
-    @keyframes scrollPulse {
-      0%, 100% { opacity: 0.4; transform: scaleY(1); }
-      50% { opacity: 1; transform: scaleY(1.2); }
-    }
-  </style>
 </section>
 
 
@@ -445,26 +476,104 @@
     <div class="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0 md:divide-x divide-white/5">
 
       <div class="flex flex-col items-center text-center px-6 reveal">
-        <span class="stat-number text-5xl md:text-6xl">850<span style="color:var(--accent);font-size:0.6em;">+</span></span>
+        <span class="stat-number text-5xl md:text-6xl" data-count="850" data-suffix="+">850+</span>
         <span class="text-sm text-stone-400 mt-2 font-medium">완성 프로젝트</span>
       </div>
-
       <div class="flex flex-col items-center text-center px-6 reveal reveal-delay-1">
-        <span class="stat-number text-5xl md:text-6xl">12</span>
+        <span class="stat-number text-5xl md:text-6xl" data-count="12">12</span>
         <span class="text-sm text-stone-400 mt-2 font-medium">년 업력</span>
       </div>
-
       <div class="flex flex-col items-center text-center px-6 reveal reveal-delay-2">
-        <span class="stat-number text-5xl md:text-6xl">98<span style="color:var(--accent);font-size:0.6em;">%</span></span>
+        <span class="stat-number text-5xl md:text-6xl" data-count="98" data-suffix="%">98%</span>
         <span class="text-sm text-stone-400 mt-2 font-medium">고객 재계약율</span>
       </div>
-
       <div class="flex flex-col items-center text-center px-6 reveal reveal-delay-3">
-        <span class="stat-number text-5xl md:text-6xl">24</span>
+        <span class="stat-number text-5xl md:text-6xl" data-count="24">24</span>
         <span class="text-sm text-stone-400 mt-2 font-medium">수상 경력</span>
       </div>
 
     </div>
+  </div>
+</section>
+
+
+<!-- ════════════════════════════════════════
+     SCROLL STORY — WEBP FRAME SCRUBBING
+════════════════════════════════════════ -->
+<section id="scroll-story" style="height: 550vh; position: relative;">
+  <div id="scroll-story-sticky">
+
+    <!-- Progress bar -->
+    <div id="scroll-progress-bar"></div>
+
+    <!-- Canvas for WebP frames -->
+    <canvas id="scroll-canvas"></canvas>
+
+    <!-- Dark overlay -->
+    <div class="story-overlay"></div>
+
+    <!-- Loading indicator -->
+    <div id="frame-loader" style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#0c0a09;z-index:20;transition:opacity 0.6s ease;">
+      <div style="display:flex;gap:6px;margin-bottom:16px;">
+        <div style="width:6px;height:6px;border-radius:50%;background:var(--accent);animation:dotPulse 1.2s ease-in-out infinite;"></div>
+        <div style="width:6px;height:6px;border-radius:50%;background:var(--accent);animation:dotPulse 1.2s ease-in-out 0.2s infinite;"></div>
+        <div style="width:6px;height:6px;border-radius:50%;background:var(--accent);animation:dotPulse 1.2s ease-in-out 0.4s infinite;"></div>
+      </div>
+      <span id="load-progress-text" style="font-size:12px;color:#78716c;letter-spacing:0.08em;font-family:'Outfit',sans-serif;">영상 로딩 중... 0%</span>
+    </div>
+
+    <!-- Dynamic text panels -->
+    <div id="story-panel-0" class="story-text-panel" style="opacity:0;transition:opacity 0.5s ease;">
+      <div class="accent-pill mb-4 w-fit">
+        <iconify-icon icon="solar:play-circle-bold" style="font-size:12px;"></iconify-icon>
+        공간 스토리
+      </div>
+      <h2 class="headline-ko text-4xl md:text-5xl text-white max-w-xl" style="text-shadow:0 2px 24px rgba(0,0,0,0.8);">
+        빛이 만드는<br /><span style="color:var(--accent);">첫 인상</span>
+      </h2>
+    </div>
+
+    <div id="story-panel-1" class="story-text-panel" style="opacity:0;transition:opacity 0.5s ease;">
+      <div class="accent-pill mb-4 w-fit">
+        <iconify-icon icon="solar:sofa-bold" style="font-size:12px;"></iconify-icon>
+        리빙 스페이스
+      </div>
+      <h2 class="headline-ko text-4xl md:text-5xl text-white max-w-xl" style="text-shadow:0 2px 24px rgba(0,0,0,0.8);">
+        소재 하나하나가<br /><span style="color:var(--accent);">삶의 질감</span>이 됩니다.
+      </h2>
+    </div>
+
+    <div id="story-panel-2" class="story-text-panel" style="opacity:0;transition:opacity 0.5s ease;">
+      <div class="accent-pill mb-4 w-fit">
+        <iconify-icon icon="solar:buildings-2-bold" style="font-size:12px;"></iconify-icon>
+        공간 설계
+      </div>
+      <h2 class="headline-ko text-4xl md:text-5xl text-white max-w-xl" style="text-shadow:0 2px 24px rgba(0,0,0,0.8);">
+        구조가 바뀌면<br /><span style="color:var(--accent);">일상이 바뀝니다.</span>
+      </h2>
+    </div>
+
+    <div id="story-panel-3" class="story-text-panel" style="opacity:0;transition:opacity 0.5s ease;">
+      <div class="accent-pill mb-4 w-fit">
+        <iconify-icon icon="solar:magic-stick-bold" style="font-size:12px;"></iconify-icon>
+        마감 디테일
+      </div>
+      <h2 class="headline-ko text-4xl md:text-5xl text-white max-w-xl" style="text-shadow:0 2px 24px rgba(0,0,0,0.8);">
+        눈에 보이지 않는 곳까지<br /><span style="color:var(--accent);">완벽하게.</span>
+      </h2>
+    </div>
+
+    <!-- Side labels (right) -->
+    <div class="story-label hidden md:flex">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:4px;">
+        <div id="story-dot-0" style="width:6px;height:6px;border-radius:50%;background:var(--accent);transition:all 0.4s var(--ease-spring);opacity:1;transform:scale(1.5);"></div>
+        <div id="story-dot-1" style="width:6px;height:6px;border-radius:50%;background:#57534e;transition:all 0.4s var(--ease-spring);"></div>
+        <div id="story-dot-2" style="width:6px;height:6px;border-radius:50%;background:#57534e;transition:all 0.4s var(--ease-spring);"></div>
+        <div id="story-dot-3" style="width:6px;height:6px;border-radius:50%;background:#57534e;transition:all 0.4s var(--ease-spring);"></div>
+      </div>
+      <span id="story-frame-count" style="font-family:'Outfit',sans-serif;font-size:11px;color:#57534e;letter-spacing:0.06em;writing-mode:vertical-rl;transform:rotate(180deg);margin-top:12px;">001 / 080</span>
+    </div>
+
   </div>
 </section>
 
@@ -476,19 +585,23 @@
   <div class="grid md:grid-cols-2 gap-16 items-center">
 
     <!-- Left: Image stack -->
-    <div class="relative h-[500px] reveal">
-      <img
-        src="https://picsum.photos/600/700?random=20"
-        alt="루미노 쇼룸 전경"
-        class="absolute top-0 left-0 w-4/5 h-4/5 object-cover rounded-2xl"
-        style="border:1px solid rgba(255,255,255,0.06);"
-      />
-      <img
-        src="https://picsum.photos/300/300?random=21"
-        alt="루미노 디자이너 작업 모습"
-        class="absolute bottom-0 right-0 w-2/5 h-2/5 object-cover rounded-2xl"
-        style="border:2px solid var(--accent-border);box-shadow:0 24px 64px rgba(0,0,0,0.6);"
-      />
+    <div class="relative h-[520px] reveal">
+      <div class="absolute top-0 left-0 w-4/5 h-4/5 overflow-hidden rounded-2xl warm-overlay" style="border:1px solid rgba(255,255,255,0.07);">
+        <img
+          src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=800&q=80"
+          alt="루미노 쇼룸 전경"
+          class="interior-img w-full h-full object-cover"
+          onerror="this.src='https://picsum.photos/600/500?random=20'"
+        />
+      </div>
+      <div class="absolute bottom-0 right-0 w-2/5 h-2/5 overflow-hidden rounded-2xl warm-overlay" style="border:2px solid var(--accent-border);box-shadow:0 24px 64px rgba(0,0,0,0.7);">
+        <img
+          src="https://images.unsplash.com/photo-1556912172-45b7abe8b7e1?w=400&q=80"
+          alt="디자이너 작업 모습"
+          class="interior-img w-full h-full object-cover"
+          onerror="this.src='https://picsum.photos/300/300?random=21'"
+        />
+      </div>
       <!-- Award badge -->
       <div class="absolute top-6 right-6 card-bezel" style="width:120px;">
         <div class="card-bezel-inner flex flex-col items-center py-3">
@@ -504,30 +617,25 @@
         <iconify-icon icon="solar:buildings-bold" style="font-size:12px;"></iconify-icon>
         스튜디오 소개
       </div>
-
       <h2 class="headline-ko text-4xl md:text-5xl text-white mb-6">
         공간을 설계하는 것이 아니라,<br />
         <span style="color:var(--accent);">경험을 설계합니다.</span>
       </h2>
-
       <p class="text-stone-400 text-base leading-relaxed mb-6">
         루미노 인테리어는 2013년 서울 마포구에서 시작해, 주거·상업·오피스 공간을 아우르는
         통합 인테리어 스튜디오로 성장했습니다. 건축가·공간 디자이너·조명 전문가로 구성된
         17인의 팀이 각 프로젝트에 처음부터 끝까지 함께합니다.
       </p>
-
       <p class="text-stone-400 text-base leading-relaxed mb-8">
-        저희는 유행을 좇지 않습니다. 거주자가 10년 후에도 만족할 수 있는, 시간이 지날수록
-        더 아름다워지는 공간을 만드는 것을 목표로 합니다.
+        저희는 유행을 좇지 않습니다. 거주자가 10년 후에도 만족할 수 있는,
+        시간이 지날수록 더 아름다워지는 공간을 만드는 것을 목표로 합니다.
       </p>
-
       <div class="flex flex-wrap gap-3 mb-8">
         <span class="tag"><iconify-icon icon="solar:check-circle-bold" style="color:var(--accent);"></iconify-icon> 친환경 자재 우선</span>
         <span class="tag"><iconify-icon icon="solar:check-circle-bold" style="color:var(--accent);"></iconify-icon> 3D 시뮬레이션 제공</span>
         <span class="tag"><iconify-icon icon="solar:check-circle-bold" style="color:var(--accent);"></iconify-icon> 사후 A/S 2년 보증</span>
         <span class="tag"><iconify-icon icon="solar:check-circle-bold" style="color:var(--accent);"></iconify-icon> 공정 실시간 보고</span>
       </div>
-
       <a href="#contact" class="btn-secondary inline-flex">
         <iconify-icon icon="solar:phone-bold" style="font-size:18px;"></iconify-icon>
         상담 예약하기
@@ -541,7 +649,7 @@
 <!-- ════════════════════════════════════════
      SERVICES — BENTO GRID
 ════════════════════════════════════════ -->
-<section id="services" class="py-28 bg-stone-950/50">
+<section id="services" class="py-28" style="background:linear-gradient(180deg,#0c0a09 0%,#111010 50%,#0c0a09 100%);">
   <div class="max-w-7xl mx-auto px-6">
 
     <div class="max-w-xl mb-16 reveal">
@@ -550,28 +658,30 @@
         서비스
       </div>
       <h2 class="headline-ko text-4xl md:text-5xl text-white">
-        어떤 공간이든<br />
-        <span style="color:var(--accent);">루미노가 함께합니다.</span>
+        어떤 공간이든<br /><span style="color:var(--accent);">루미노가 함께합니다.</span>
       </h2>
     </div>
 
-    <!-- Bento Grid -->
     <div class="grid md:grid-cols-3 gap-5">
 
-      <!-- Large card: Residential -->
+      <!-- Large: Residential -->
       <div class="md:col-span-2 card-bezel reveal" style="grid-row:span 2;">
-        <div class="card-bezel-inner relative overflow-hidden" style="min-height:420px;">
-          <img
-            src="https://picsum.photos/800/500?random=30"
-            alt="주거 인테리어 시공 사례"
-            class="absolute inset-0 w-full h-full object-cover opacity-30 rounded-[18px]"
-          />
-          <div class="relative z-10 flex flex-col justify-between h-full" style="min-height:420px;padding:28px;">
+        <div class="card-bezel-inner relative overflow-hidden" style="min-height:440px;padding:0;">
+          <div class="absolute inset-0 warm-overlay overflow-hidden rounded-[18px]">
+            <img
+              src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=900&q=80"
+              alt="아파트 리모델링 대표 시공 사례"
+              class="interior-img w-full h-full object-cover rounded-[18px]"
+              onerror="this.src='https://picsum.photos/800/500?random=30'"
+              style="opacity:0.35;"
+            />
+          </div>
+          <div class="relative z-10 flex flex-col justify-between h-full p-8" style="min-height:440px;">
             <div>
               <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:var(--accent-muted);border:1px solid var(--accent-border);">
                 <iconify-icon icon="solar:home-2-bold" style="color:var(--accent);font-size:22px;"></iconify-icon>
               </div>
-              <span class="tag mb-4">주거 공간</span>
+              <span class="tag mb-4 inline-block">주거 공간</span>
               <h3 class="headline-ko text-3xl text-white mt-3 mb-4">아파트 · 주택<br />리모델링</h3>
               <p class="text-stone-400 text-sm leading-relaxed max-w-md">
                 20평대 소형 아파트부터 단독주택까지, 평수와 예산에 구애받지 않고
@@ -601,9 +711,7 @@
           </div>
           <span class="tag">상업 공간</span>
           <h3 class="text-white font-bold text-xl mt-3 mb-3 leading-snug">카페 · 레스토랑<br />오피스 인테리어</h3>
-          <p class="text-stone-400 text-sm leading-relaxed">
-            브랜드 아이덴티티를 공간으로 번역합니다. 고객 동선, 매출 효율, 브랜드 일관성을 함께 고려합니다.
-          </p>
+          <p class="text-stone-400 text-sm leading-relaxed">브랜드 아이덴티티를 공간으로 번역합니다. 고객 동선, 매출 효율, 브랜드 일관성을 함께 고려합니다.</p>
         </div>
       </div>
 
@@ -615,9 +723,7 @@
           </div>
           <span class="tag">오피스</span>
           <h3 class="text-white font-bold text-xl mt-3 mb-3 leading-snug">업무 효율을 높이는<br />오피스 설계</h3>
-          <p class="text-stone-400 text-sm leading-relaxed">
-            집중 업무 공간과 협업 공간의 균형을 맞추고, 직원 웰빙을 중심에 둔 사무환경을 만듭니다.
-          </p>
+          <p class="text-stone-400 text-sm leading-relaxed">집중 업무 공간과 협업 공간의 균형을 맞추고, 직원 웰빙을 중심에 둔 사무환경을 만듭니다.</p>
         </div>
       </div>
 
@@ -629,9 +735,7 @@
           </div>
           <span class="tag">컨설팅</span>
           <h3 class="text-white font-bold text-xl mt-3 mb-3 leading-snug">공간 컨설팅<br />& 스타일링</h3>
-          <p class="text-stone-400 text-sm leading-relaxed">
-            큰 공사 없이 가구 배치, 조명, 패브릭만으로도 공간의 분위기를 완전히 바꿀 수 있습니다.
-          </p>
+          <p class="text-stone-400 text-sm leading-relaxed">큰 공사 없이 가구 배치, 조명, 패브릭만으로도 공간의 분위기를 완전히 바꿀 수 있습니다.</p>
         </div>
       </div>
 
@@ -643,9 +747,7 @@
           </div>
           <span class="tag">리노베이션</span>
           <h3 class="text-white font-bold text-xl mt-3 mb-3 leading-snug">노후 건물<br />전체 리노베이션</h3>
-          <p class="text-stone-400 text-sm leading-relaxed">
-            20년 이상 노후 건물의 구조 보강부터 외장·내장 전면 리뉴얼까지 책임집니다.
-          </p>
+          <p class="text-stone-400 text-sm leading-relaxed">20년 이상 노후 건물의 구조 보강부터 외장·내장 전면 리뉴얼까지 책임집니다.</p>
         </div>
       </div>
 
@@ -655,7 +757,7 @@
 
 
 <!-- ════════════════════════════════════════
-     PORTFOLIO
+     PORTFOLIO — ZIG-ZAG
 ════════════════════════════════════════ -->
 <section id="portfolio" class="py-28">
   <div class="max-w-7xl mx-auto px-6">
@@ -676,14 +778,18 @@
       </a>
     </div>
 
-    <!-- Zig-zag layout -->
     <div class="flex flex-col gap-8">
 
       <!-- Project 1 -->
       <div class="grid md:grid-cols-5 gap-6 items-center reveal">
-        <div class="md:col-span-3 relative overflow-hidden rounded-2xl" style="height:400px;border:1px solid rgba(255,255,255,0.06);">
-          <img src="https://picsum.photos/800/400?random=40" alt="성북구 단독주택 프로젝트" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
-          <div class="absolute bottom-0 left-0 right-0 p-6" style="background:linear-gradient(to top,rgba(12,10,9,0.9),transparent);">
+        <div class="md:col-span-3 relative overflow-hidden rounded-2xl warm-overlay" style="height:420px;border:1px solid rgba(255,255,255,0.07);">
+          <img
+            src="https://images.unsplash.com/photo-1600566753376-12c8ab7fb75b?w=900&q=80"
+            alt="성북구 단독주택 프로젝트"
+            class="interior-img w-full h-full object-cover"
+            onerror="this.src='https://picsum.photos/800/420?random=40'"
+          />
+          <div class="absolute bottom-0 left-0 right-0 p-6" style="background:linear-gradient(to top,rgba(12,10,9,0.95),transparent);">
             <span class="tag mb-2 inline-block">주거 공간</span>
             <div class="stat-number text-xl">2024.03</div>
           </div>
@@ -694,7 +800,7 @@
             1970년대 지어진 50평 단독주택을 현대적 미감과 원래 건물의 역사성을 살려
             리모델링했습니다. 건식 시공으로 입주 기간을 최소화했습니다.
           </p>
-          <div class="flex gap-3">
+          <div class="flex gap-3 flex-wrap">
             <span class="tag">50평</span>
             <span class="tag">4개월 소요</span>
             <span class="tag">예산 1.8억</span>
@@ -712,15 +818,20 @@
             '로스팅 과정을 보여주는 카페'라는 브랜드 철학을 공간으로 구현했습니다.
             투명한 로스팅룸과 오픈 바 카운터가 핵심 요소입니다.
           </p>
-          <div class="flex gap-3">
+          <div class="flex gap-3 flex-wrap">
             <span class="tag">65평</span>
             <span class="tag">2개월 소요</span>
             <span class="tag">예산 8,500만원</span>
           </div>
         </div>
-        <div class="md:col-span-3 relative overflow-hidden rounded-2xl order-1 md:order-2" style="height:400px;border:1px solid rgba(255,255,255,0.06);">
-          <img src="https://picsum.photos/800/400?random=41" alt="합정동 카페 인테리어" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
-          <div class="absolute bottom-0 left-0 right-0 p-6" style="background:linear-gradient(to top,rgba(12,10,9,0.9),transparent);">
+        <div class="md:col-span-3 relative overflow-hidden rounded-2xl warm-overlay order-1 md:order-2" style="height:420px;border:1px solid rgba(255,255,255,0.07);">
+          <img
+            src="https://images.unsplash.com/photo-1559329007-40df8a9345d8?w=900&q=80"
+            alt="합정동 카페 인테리어"
+            class="interior-img w-full h-full object-cover"
+            onerror="this.src='https://picsum.photos/800/420?random=41'"
+          />
+          <div class="absolute bottom-0 left-0 right-0 p-6" style="background:linear-gradient(to top,rgba(12,10,9,0.95),transparent);">
             <span class="tag mb-2 inline-block">상업 공간</span>
             <div class="stat-number text-xl">2024.01</div>
           </div>
@@ -731,9 +842,14 @@
 
       <!-- Project 3 -->
       <div class="grid md:grid-cols-5 gap-6 items-center reveal">
-        <div class="md:col-span-3 relative overflow-hidden rounded-2xl" style="height:400px;border:1px solid rgba(255,255,255,0.06);">
-          <img src="https://picsum.photos/800/400?random=42" alt="강남구 오피스 인테리어" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
-          <div class="absolute bottom-0 left-0 right-0 p-6" style="background:linear-gradient(to top,rgba(12,10,9,0.9),transparent);">
+        <div class="md:col-span-3 relative overflow-hidden rounded-2xl warm-overlay" style="height:420px;border:1px solid rgba(255,255,255,0.07);">
+          <img
+            src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=80"
+            alt="강남구 오피스 인테리어"
+            class="interior-img w-full h-full object-cover"
+            onerror="this.src='https://picsum.photos/800/420?random=42'"
+          />
+          <div class="absolute bottom-0 left-0 right-0 p-6" style="background:linear-gradient(to top,rgba(12,10,9,0.95),transparent);">
             <span class="tag mb-2 inline-block">오피스</span>
             <div class="stat-number text-xl">2023.11</div>
           </div>
@@ -744,7 +860,7 @@
             80명 규모의 스타트업을 위해 집중 업무존·협업존·휴게존을 유기적으로 배치했습니다.
             입사 첫날부터 직원들이 회사를 사랑할 수 있는 공간을 목표로 했습니다.
           </p>
-          <div class="flex gap-3">
+          <div class="flex gap-3 flex-wrap">
             <span class="tag">180평</span>
             <span class="tag">3개월 소요</span>
             <span class="tag">예산 2.4억</span>
@@ -760,7 +876,7 @@
 <!-- ════════════════════════════════════════
      PROCESS
 ════════════════════════════════════════ -->
-<section id="process" class="py-28" style="background:linear-gradient(to bottom,#0c0a09,#111010,#0c0a09);">
+<section id="process" class="py-28" style="background:linear-gradient(180deg,#0c0a09 0%,#111010 50%,#0c0a09 100%);">
   <div class="max-w-7xl mx-auto px-6">
 
     <div class="text-center max-w-xl mx-auto mb-20 reveal">
@@ -774,68 +890,50 @@
     </div>
 
     <div class="grid md:grid-cols-4 gap-6">
-
-      <!-- Step 1 -->
       <div class="card-bezel reveal">
-        <div class="card-bezel-inner relative">
+        <div class="card-bezel-inner">
           <div class="step-number">01</div>
           <div class="w-10 h-10 rounded-xl flex items-center justify-center mt-3 mb-4" style="background:var(--accent-muted);border:1px solid var(--accent-border);">
             <iconify-icon icon="solar:chat-round-call-bold" style="color:var(--accent);font-size:18px;"></iconify-icon>
           </div>
           <h3 class="text-white font-bold text-lg mb-3">무료 상담</h3>
-          <p class="text-stone-400 text-sm leading-relaxed">
-            방문 또는 화상으로 공간 상황, 예산, 원하는 스타일을 자유롭게 이야기합니다.
-            이 단계는 완전 무료입니다.
-          </p>
-          <div class="mt-4 text-xs text-stone-500 uppercase tracking-widest">1-2일 소요</div>
+          <p class="text-stone-400 text-sm leading-relaxed">방문 또는 화상으로 공간 상황, 예산, 원하는 스타일을 자유롭게 이야기합니다.</p>
+          <div class="mt-4 text-xs text-stone-500 uppercase tracking-widest">1–2일 소요</div>
         </div>
       </div>
-
-      <!-- Step 2 -->
       <div class="card-bezel reveal reveal-delay-1">
-        <div class="card-bezel-inner relative">
+        <div class="card-bezel-inner">
           <div class="step-number">02</div>
           <div class="w-10 h-10 rounded-xl flex items-center justify-center mt-3 mb-4" style="background:var(--accent-muted);border:1px solid var(--accent-border);">
             <iconify-icon icon="solar:pen-new-round-bold" style="color:var(--accent);font-size:18px;"></iconify-icon>
           </div>
           <h3 class="text-white font-bold text-lg mb-3">공간 분석 & 기획</h3>
-          <p class="text-stone-400 text-sm leading-relaxed">
-            현장 실측 후 라이프스타일 분석 결과를 바탕으로 초기 공간 기획안을 제안합니다.
-          </p>
-          <div class="mt-4 text-xs text-stone-500 uppercase tracking-widest">3-5일 소요</div>
+          <p class="text-stone-400 text-sm leading-relaxed">현장 실측 후 라이프스타일 분석 결과를 바탕으로 초기 공간 기획안을 제안합니다.</p>
+          <div class="mt-4 text-xs text-stone-500 uppercase tracking-widest">3–5일 소요</div>
         </div>
       </div>
-
-      <!-- Step 3 -->
       <div class="card-bezel reveal reveal-delay-2">
-        <div class="card-bezel-inner relative">
+        <div class="card-bezel-inner">
           <div class="step-number">03</div>
           <div class="w-10 h-10 rounded-xl flex items-center justify-center mt-3 mb-4" style="background:var(--accent-muted);border:1px solid var(--accent-border);">
             <iconify-icon icon="solar:monitor-bold" style="color:var(--accent);font-size:18px;"></iconify-icon>
           </div>
           <h3 class="text-white font-bold text-lg mb-3">3D 설계 & 확정</h3>
-          <p class="text-stone-400 text-sm leading-relaxed">
-            포토리얼 3D 렌더링으로 완성 모습을 미리 확인합니다. 마음에 들 때까지 수정합니다.
-          </p>
-          <div class="mt-4 text-xs text-stone-500 uppercase tracking-widest">1-2주 소요</div>
+          <p class="text-stone-400 text-sm leading-relaxed">포토리얼 3D 렌더링으로 완성 모습을 미리 확인합니다. 마음에 들 때까지 수정합니다.</p>
+          <div class="mt-4 text-xs text-stone-500 uppercase tracking-widest">1–2주 소요</div>
         </div>
       </div>
-
-      <!-- Step 4 -->
       <div class="card-bezel reveal reveal-delay-3">
-        <div class="card-bezel-inner relative">
+        <div class="card-bezel-inner">
           <div class="step-number">04</div>
           <div class="w-10 h-10 rounded-xl flex items-center justify-center mt-3 mb-4" style="background:var(--accent-muted);border:1px solid var(--accent-border);">
             <iconify-icon icon="solar:hammer-bold" style="color:var(--accent);font-size:18px;"></iconify-icon>
           </div>
           <h3 class="text-white font-bold text-lg mb-3">시공 & 사후관리</h3>
-          <p class="text-stone-400 text-sm leading-relaxed">
-            카카오톡 채널을 통해 공정을 매일 보고합니다. 준공 후 2년 무상 A/S를 제공합니다.
-          </p>
+          <p class="text-stone-400 text-sm leading-relaxed">카카오톡 채널을 통해 공정을 매일 보고합니다. 준공 후 2년 무상 A/S를 제공합니다.</p>
           <div class="mt-4 text-xs text-stone-500 uppercase tracking-widest">일정에 따라 상이</div>
         </div>
       </div>
-
     </div>
   </div>
 </section>
@@ -859,17 +957,12 @@
 
     <div class="grid md:grid-cols-3 gap-6">
 
-      <!-- Testimonial 1 -->
       <div class="card-bezel reveal">
         <div class="card-bezel-inner">
           <div class="quote-mark">"</div>
-          <p class="text-stone-300 text-sm leading-relaxed mt-3 mb-6">
-            처음엔 예산 때문에 망설였는데, 상담을 받아보니 오히려 제 예산 안에서 최대한
-            할 수 있는 것들을 정직하게 알려줘서 믿음이 생겼어요. 완성된 집을 보고
-            눈물이 날 뻔했습니다.
-          </p>
+          <p class="text-stone-300 text-sm leading-relaxed mt-3 mb-6">처음엔 예산 때문에 망설였는데, 상담을 받아보니 오히려 제 예산 안에서 최대한 할 수 있는 것들을 정직하게 알려줘서 믿음이 생겼어요. 완성된 집을 보고 눈물이 날 뻔했습니다.</p>
           <div class="flex items-center gap-3 pt-4 border-t border-white/5">
-            <img src="https://picsum.photos/48/48?random=50" alt="박지수" class="w-10 h-10 rounded-full object-cover" />
+            <img src="https://picsum.photos/48/48?random=50" alt="박지수" class="w-10 h-10 rounded-full object-cover" style="filter:grayscale(20%) sepia(15%);" />
             <div>
               <div class="text-white font-semibold text-sm">박지수</div>
               <div class="text-stone-500 text-xs">마포구 아파트 리모델링 · 32평</div>
@@ -885,7 +978,6 @@
         </div>
       </div>
 
-      <!-- Testimonial 2 (featured) -->
       <div class="card-bezel reveal reveal-delay-1" style="border-color:var(--accent-border);">
         <div class="card-bezel-inner" style="border-color:rgba(200,150,62,0.08);">
           <div class="accent-pill mb-4 w-fit">
@@ -893,13 +985,9 @@
             인증된 후기
           </div>
           <div class="quote-mark">"</div>
-          <p class="text-stone-200 text-sm leading-relaxed mt-3 mb-6">
-            상업공간 인테리어는 처음이라 걱정이 많았는데, 고객 동선부터 포스기 위치까지
-            세세하게 고민해줘서 오픈 후 운영이 너무 편합니다. 매출도 이전 매장 대비
-            40% 올랐어요.
-          </p>
+          <p class="text-stone-200 text-sm leading-relaxed mt-3 mb-6">상업공간 인테리어는 처음이라 걱정이 많았는데, 고객 동선부터 포스기 위치까지 세세하게 고민해줘서 오픈 후 운영이 너무 편합니다. 매출도 이전 매장 대비 40% 올랐어요.</p>
           <div class="flex items-center gap-3 pt-4 border-t border-white/5">
-            <img src="https://picsum.photos/48/48?random=51" alt="최현우" class="w-10 h-10 rounded-full object-cover" />
+            <img src="https://picsum.photos/48/48?random=51" alt="최현우" class="w-10 h-10 rounded-full object-cover" style="filter:grayscale(20%) sepia(15%);" />
             <div>
               <div class="text-white font-semibold text-sm">최현우</div>
               <div class="text-stone-500 text-xs">합정동 카페 오픈 · 45평</div>
@@ -915,16 +1003,12 @@
         </div>
       </div>
 
-      <!-- Testimonial 3 -->
       <div class="card-bezel reveal reveal-delay-2">
         <div class="card-bezel-inner">
           <div class="quote-mark">"</div>
-          <p class="text-stone-300 text-sm leading-relaxed mt-3 mb-6">
-            공사 중에 매일 카카오톡으로 사진과 진행 상황을 보내줘서 해외에 있으면서도
-            안심할 수 있었습니다. 약속한 날짜에 정확히 완공된 것도 정말 인상적이었어요.
-          </p>
+          <p class="text-stone-300 text-sm leading-relaxed mt-3 mb-6">공사 중에 매일 카카오톡으로 사진과 진행 상황을 보내줘서 해외에 있으면서도 안심할 수 있었습니다. 약속한 날짜에 정확히 완공된 것도 정말 인상적이었어요.</p>
           <div class="flex items-center gap-3 pt-4 border-t border-white/5">
-            <img src="https://picsum.photos/48/48?random=52" alt="이서연" class="w-10 h-10 rounded-full object-cover" />
+            <img src="https://picsum.photos/48/48?random=52" alt="이서연" class="w-10 h-10 rounded-full object-cover" style="filter:grayscale(20%) sepia(15%);" />
             <div>
               <div class="text-white font-semibold text-sm">이서연</div>
               <div class="text-stone-500 text-xs">분당구 오피스텔 · 24평</div>
@@ -942,7 +1026,7 @@
 
     </div>
 
-    <!-- Review summary bar -->
+    <!-- Review bar -->
     <div class="mt-12 card-bezel reveal">
       <div class="card-bezel-inner">
         <div class="grid md:grid-cols-4 gap-6 items-center">
@@ -999,60 +1083,34 @@
      CTA — CONTACT
 ════════════════════════════════════════ -->
 <section id="contact" class="py-28 relative overflow-hidden">
-
-  <!-- Background glow -->
-  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(200,150,62,0.1) 0%,transparent 70%);pointer-events:none;"></div>
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:400px;background:radial-gradient(ellipse,rgba(200,150,62,0.09) 0%,transparent 70%);pointer-events:none;"></div>
 
   <div class="max-w-4xl mx-auto px-6 text-center relative z-10">
-
     <div class="accent-pill mb-8 mx-auto w-fit reveal">
       <iconify-icon icon="solar:phone-calling-bold" style="font-size:12px;"></iconify-icon>
       무료 상담 신청
     </div>
-
     <h2 class="headline-ko text-5xl md:text-6xl text-white mb-6 reveal reveal-delay-1">
-      지금 바로<br />
-      <span style="color:var(--accent);">공간 변화를</span><br />
-      시작하세요.
+      지금 바로<br /><span style="color:var(--accent);">공간 변화를</span><br />시작하세요.
     </h2>
-
     <p class="text-stone-400 text-lg leading-relaxed max-w-lg mx-auto mb-12 reveal reveal-delay-2">
-      상담은 완전 무료입니다. 예산이 부족하거나 어떻게 시작해야 할지 모르더라도 괜찮습니다.
-      먼저 이야기를 들어드립니다.
+      상담은 완전 무료입니다. 예산이 부족하거나 어떻게 시작해야 할지 모르더라도 괜찮습니다. 먼저 이야기를 들어드립니다.
     </p>
 
-    <!-- Contact form card -->
     <div class="card-bezel text-left reveal reveal-delay-2">
       <div class="card-bezel-inner">
         <div class="grid md:grid-cols-2 gap-5">
           <div>
             <label class="text-sm text-stone-400 font-medium block mb-2">이름</label>
-            <input
-              type="text"
-              placeholder="홍길동"
-              class="w-full px-4 py-3 rounded-xl text-sm text-white placeholder-stone-600 outline-none transition-all duration-200"
-              style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);"
-              onfocus="this.style.borderColor='var(--accent-border)'"
-              onblur="this.style.borderColor='rgba(255,255,255,0.08)'"
-            />
+            <input type="text" placeholder="홍길동" class="w-full px-4 py-3 rounded-xl text-sm text-white placeholder-stone-600 outline-none transition-all duration-200" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);" onfocus="this.style.borderColor='var(--accent-border)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'" />
           </div>
           <div>
             <label class="text-sm text-stone-400 font-medium block mb-2">연락처</label>
-            <input
-              type="tel"
-              placeholder="010-0000-0000"
-              class="w-full px-4 py-3 rounded-xl text-sm text-white placeholder-stone-600 outline-none transition-all duration-200"
-              style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);"
-              onfocus="this.style.borderColor='var(--accent-border)'"
-              onblur="this.style.borderColor='rgba(255,255,255,0.08)'"
-            />
+            <input type="tel" placeholder="010-0000-0000" class="w-full px-4 py-3 rounded-xl text-sm text-white placeholder-stone-600 outline-none transition-all duration-200" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);" onfocus="this.style.borderColor='var(--accent-border)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'" />
           </div>
           <div>
             <label class="text-sm text-stone-400 font-medium block mb-2">공간 유형</label>
-            <select
-              class="w-full px-4 py-3 rounded-xl text-sm text-stone-300 outline-none transition-all duration-200 appearance-none"
-              style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);"
-            >
+            <select class="w-full px-4 py-3 rounded-xl text-sm text-stone-300 outline-none transition-all duration-200 appearance-none" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);">
               <option value="" style="background:#1c1917;">선택해주세요</option>
               <option value="apt" style="background:#1c1917;">아파트 리모델링</option>
               <option value="house" style="background:#1c1917;">단독주택</option>
@@ -1063,10 +1121,7 @@
           </div>
           <div>
             <label class="text-sm text-stone-400 font-medium block mb-2">예상 예산</label>
-            <select
-              class="w-full px-4 py-3 rounded-xl text-sm text-stone-300 outline-none transition-all duration-200 appearance-none"
-              style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);"
-            >
+            <select class="w-full px-4 py-3 rounded-xl text-sm text-stone-300 outline-none transition-all duration-200 appearance-none" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);">
               <option value="" style="background:#1c1917;">선택해주세요</option>
               <option value="1" style="background:#1c1917;">500만원 이하</option>
               <option value="2" style="background:#1c1917;">500만 ~ 2,000만원</option>
@@ -1076,36 +1131,19 @@
           </div>
           <div class="md:col-span-2">
             <label class="text-sm text-stone-400 font-medium block mb-2">상담 내용 (선택)</label>
-            <textarea
-              rows="3"
-              placeholder="원하시는 스타일, 주요 문제점, 희망 완공 시기 등 자유롭게 적어주세요."
-              class="w-full px-4 py-3 rounded-xl text-sm text-white placeholder-stone-600 outline-none resize-none transition-all duration-200"
-              style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);"
-              onfocus="this.style.borderColor='var(--accent-border)'"
-              onblur="this.style.borderColor='rgba(255,255,255,0.08)'"
-            ></textarea>
+            <textarea rows="3" placeholder="원하시는 스타일, 주요 문제점, 희망 완공 시기 등 자유롭게 적어주세요." class="w-full px-4 py-3 rounded-xl text-sm text-white placeholder-stone-600 outline-none resize-none transition-all duration-200" style="background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);" onfocus="this.style.borderColor='var(--accent-border)'" onblur="this.style.borderColor='rgba(255,255,255,0.08)'"></textarea>
           </div>
         </div>
         <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 mt-6 pt-6 border-t border-white/5">
-          <p class="text-xs text-stone-500 leading-relaxed max-w-xs">
-            제출 후 영업일 기준 1일 이내 담당자가 연락드립니다.<br />
-            개인정보는 상담 목적 외 사용되지 않습니다.
-          </p>
-          <button
-            type="button"
-            class="btn-primary"
-            onclick="alert('상담 신청이 완료되었습니다. 영업일 기준 1일 내로 연락드리겠습니다.')"
-          >
+          <p class="text-xs text-stone-500 leading-relaxed max-w-xs">제출 후 영업일 기준 1일 이내 담당자가 연락드립니다.<br />개인정보는 상담 목적 외 사용되지 않습니다.</p>
+          <button type="button" class="btn-primary" onclick="alert('상담 신청이 완료되었습니다.\n영업일 기준 1일 내로 연락드리겠습니다.')">
             무료 상담 신청하기
-            <span class="icon-wrap">
-              <iconify-icon icon="solar:arrow-right-bold" style="font-size:14px;"></iconify-icon>
-            </span>
+            <span class="icon-wrap"><iconify-icon icon="solar:arrow-right-bold" style="font-size:14px;"></iconify-icon></span>
           </button>
         </div>
       </div>
     </div>
 
-    <!-- Direct contact -->
     <div class="flex flex-col md:flex-row items-center justify-center gap-6 mt-10 reveal reveal-delay-3">
       <a href="tel:02-000-0000" class="flex items-center gap-2 text-stone-400 hover:text-stone-100 transition-colors text-sm">
         <iconify-icon icon="solar:phone-bold" style="color:var(--accent);font-size:18px;"></iconify-icon>
@@ -1131,10 +1169,7 @@
 ════════════════════════════════════════ -->
 <footer class="border-t border-white/5 py-16">
   <div class="max-w-7xl mx-auto px-6">
-
     <div class="grid md:grid-cols-4 gap-10 mb-12">
-
-      <!-- Brand -->
       <div class="md:col-span-2">
         <div class="flex items-center gap-3 mb-5">
           <div style="width:36px;height:36px;background:var(--accent);border-radius:10px;display:flex;align-items:center;justify-content:center;">
@@ -1142,9 +1177,7 @@
           </div>
           <span style="font-family:'Outfit',sans-serif;font-weight:800;font-size:20px;letter-spacing:-0.03em;color:#e7e5e4;">LUMINO</span>
         </div>
-        <p class="text-stone-500 text-sm leading-relaxed max-w-xs mb-5">
-          루미노 인테리어는 공간이 삶을 바꾼다는 믿음을 가지고, 2013년부터 850건의 프로젝트를 통해 그 믿음을 증명해왔습니다.
-        </p>
+        <p class="text-stone-500 text-sm leading-relaxed max-w-xs mb-5">루미노 인테리어는 공간이 삶을 바꾼다는 믿음을 가지고, 2013년부터 850건의 프로젝트를 통해 그 믿음을 증명해왔습니다.</p>
         <div class="flex gap-3">
           <a href="#" class="w-9 h-9 rounded-lg flex items-center justify-center transition-all hover:scale-110" style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);">
             <iconify-icon icon="solar:instagram-bold" style="color:#a8a29e;font-size:16px;"></iconify-icon>
@@ -1157,8 +1190,6 @@
           </a>
         </div>
       </div>
-
-      <!-- Links -->
       <div>
         <h4 class="text-white font-semibold text-sm mb-4">서비스</h4>
         <ul class="flex flex-col gap-3">
@@ -1169,8 +1200,6 @@
           <li><a href="#services" class="text-stone-500 text-sm hover:text-stone-300 transition-colors">리노베이션</a></li>
         </ul>
       </div>
-
-      <!-- Company -->
       <div>
         <h4 class="text-white font-semibold text-sm mb-4">회사 정보</h4>
         <ul class="flex flex-col gap-3">
@@ -1181,21 +1210,17 @@
           <li><a href="#" class="text-stone-500 text-sm hover:text-stone-300 transition-colors">개인정보처리방침</a></li>
         </ul>
       </div>
-
     </div>
 
     <div class="gradient-line mb-8 opacity-30"></div>
 
     <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-      <p class="text-stone-600 text-xs">
-        © 2024 루미노 인테리어. All rights reserved. · 사업자등록번호: 000-00-00000 · 서울시 마포구 합정동
-      </p>
-      <div class="flex gap-1">
+      <p class="text-stone-600 text-xs">© 2024 루미노 인테리어. All rights reserved. · 사업자등록번호: 000-00-00000 · 서울시 마포구 합정동</p>
+      <div class="flex gap-1 items-center">
         <iconify-icon icon="solar:shield-check-bold" style="color:#57534e;font-size:14px;"></iconify-icon>
         <span class="text-stone-600 text-xs">개인정보 보호 인증</span>
       </div>
     </div>
-
   </div>
 </footer>
 
@@ -1204,114 +1229,234 @@
      SCRIPTS
 ════════════════════════════════════════ -->
 <script>
-  // ── Scroll-reveal via IntersectionObserver ──
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        revealObserver.unobserve(entry.target);
-      }
+// ── Config ──────────────────────────────────
+const TOTAL_FRAMES = 80;
+const FRAME_PATH = 'assets/frames/frame_';  // frame_001.webp … frame_080.webp
+
+// ── Scroll reveal ────────────────────────────
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+      revealObserver.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// ── Glass navbar ─────────────────────────────
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('glass-nav', window.scrollY > 60);
+}, { passive: true });
+
+// ── Mobile menu ──────────────────────────────
+const menuToggle = document.getElementById('menu-toggle');
+const mobileMenu = document.getElementById('mobile-menu');
+const menuIcon   = document.getElementById('menu-icon');
+let menuOpen = false;
+
+menuToggle.addEventListener('click', () => {
+  menuOpen = !menuOpen;
+  mobileMenu.classList.toggle('open', menuOpen);
+  menuIcon.setAttribute('icon', menuOpen ? 'solar:close-circle-bold' : 'solar:hamburger-menu-linear');
+  if (menuOpen) navbar.classList.add('glass-nav');
+});
+mobileMenu.querySelectorAll('a').forEach(l => l.addEventListener('click', () => {
+  menuOpen = false;
+  mobileMenu.classList.remove('open');
+  menuIcon.setAttribute('icon', 'solar:hamburger-menu-linear');
+}));
+
+// ── Counter animation ────────────────────────
+function animateCounter(el, target, suffix) {
+  const duration = 1800;
+  const start = performance.now();
+  function tick(now) {
+    const t = Math.min((now - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - t, 3);
+    el.textContent = Math.round(target * eased) + suffix;
+    if (t < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+const statsObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    entry.target.querySelectorAll('[data-count]').forEach(el => {
+      const count  = parseInt(el.dataset.count, 10);
+      const suffix = el.dataset.suffix || '';
+      animateCounter(el, count, suffix);
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    statsObserver.unobserve(entry.target);
+  });
+}, { threshold: 0.5 });
 
-  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+const statsSection = document.getElementById('about');
+if (statsSection) statsObserver.observe(statsSection);
 
-  // ── Glass navbar on scroll ──
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 60) {
-      navbar.classList.add('glass-nav');
-    } else {
-      navbar.classList.remove('glass-nav');
+// ── Hero entrance via Motion One ─────────────
+window.addEventListener('load', () => {
+  if (typeof Motion === 'undefined') return;
+  const { animate } = Motion;
+  const E = [0.16, 1, 0.3, 1];
+  animate('#hero-pill',  { opacity:[0,1], y:[20,0]  }, { duration:0.7, easing:E });
+  animate('#hero-h1',    { opacity:[0,1], y:[40,0]  }, { duration:0.9, delay:0.15, easing:E });
+  animate('#hero-desc',  { opacity:[0,1], y:[30,0]  }, { duration:0.8, delay:0.30, easing:E });
+  animate('#hero-cta',   { opacity:[0,1], y:[20,0]  }, { duration:0.7, delay:0.45, easing:E });
+});
+
+// ════════════════════════════════════════════
+// SCROLL-SCRUB — WebP frame animation
+// ════════════════════════════════════════════
+(function() {
+  const canvas      = document.getElementById('scroll-canvas');
+  const ctx         = canvas.getContext('2d');
+  const story       = document.getElementById('scroll-story');
+  const loader      = document.getElementById('frame-loader');
+  const loadText    = document.getElementById('load-progress-text');
+  const progressBar = document.getElementById('scroll-progress-bar');
+  const frameCount  = document.getElementById('story-frame-count');
+
+  const panels = [0,1,2,3].map(i => document.getElementById('story-panel-' + i));
+  const dots   = [0,1,2,3].map(i => document.getElementById('story-dot-'   + i));
+
+  let frames = new Array(TOTAL_FRAMES).fill(null);
+  let loadedCount = 0;
+  let ready = false;
+  let currentFrameF = 0;   // float, for lerp
+  let targetFrameF  = 0;
+  let rafId = null;
+
+  // Resize canvas to fill viewport
+  function resizeCanvas() {
+    canvas.width  = window.innerWidth;
+    canvas.height = window.innerHeight;
+    if (ready && frames[Math.round(currentFrameF)]) {
+      drawFrame(Math.round(currentFrameF));
     }
-  });
+  }
+  window.addEventListener('resize', resizeCanvas, { passive: true });
+  resizeCanvas();
 
-  // ── Mobile menu toggle ──
-  const menuToggle = document.getElementById('menu-toggle');
-  const mobileMenu = document.getElementById('mobile-menu');
-  const menuIcon = document.getElementById('menu-icon');
-  let menuOpen = false;
+  // Draw a single frame (cover-fit into canvas)
+  function drawFrame(idx) {
+    const img = frames[Math.max(0, Math.min(TOTAL_FRAMES - 1, idx))];
+    if (!img || !img.complete || img.naturalWidth === 0) return;
 
-  menuToggle.addEventListener('click', () => {
-    menuOpen = !menuOpen;
-    mobileMenu.classList.toggle('open', menuOpen);
-    menuIcon.setAttribute('icon', menuOpen ? 'solar:close-circle-bold' : 'solar:hamburger-menu-linear');
-    if (menuOpen) navbar.classList.add('glass-nav');
-  });
+    const cw = canvas.width, ch = canvas.height;
+    const iw = img.naturalWidth, ih = img.naturalHeight;
+    const scale = Math.max(cw / iw, ch / ih);
+    const dw = iw * scale, dh = ih * scale;
+    const dx = (cw - dw) / 2, dy = (ch - dh) / 2;
 
-  // Close mobile menu on nav link click
-  mobileMenu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      menuOpen = false;
-      mobileMenu.classList.remove('open');
-      menuIcon.setAttribute('icon', 'solar:hamburger-menu-linear');
-    });
-  });
-
-  // ── Hero entrance animations via Motion One ──
-  window.addEventListener('load', () => {
-    if (typeof Motion !== 'undefined') {
-      const { animate, stagger } = Motion;
-
-      animate(
-        '#hero-pill',
-        { opacity: [0, 1], y: [20, 0] },
-        { duration: 0.7, easing: [0.16, 1, 0.3, 1] }
-      );
-      animate(
-        '#hero-h1',
-        { opacity: [0, 1], y: [40, 0] },
-        { duration: 0.9, delay: 0.15, easing: [0.16, 1, 0.3, 1] }
-      );
-      animate(
-        '#hero-desc',
-        { opacity: [0, 1], y: [30, 0] },
-        { duration: 0.8, delay: 0.3, easing: [0.16, 1, 0.3, 1] }
-      );
-      animate(
-        '#hero-cta',
-        { opacity: [0, 1], y: [20, 0] },
-        { duration: 0.7, delay: 0.45, easing: [0.16, 1, 0.3, 1] }
-      );
-    }
-  });
-
-  // ── Smooth counter animation for stats ──
-  function animateCounter(element, target, suffix = '') {
-    const duration = 1800;
-    const start = performance.now();
-    const startValue = 0;
-
-    function update(currentTime) {
-      const elapsed = currentTime - start;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      const current = Math.round(startValue + (target - startValue) * eased);
-      element.textContent = current + suffix;
-      if (progress < 1) requestAnimationFrame(update);
-    }
-    requestAnimationFrame(update);
+    ctx.clearRect(0, 0, cw, ch);
+    ctx.drawImage(img, dx, dy, dw, dh);
   }
 
-  const statsObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const statEls = entry.target.querySelectorAll('.stat-number');
-        statEls.forEach(el => {
-          const text = el.textContent;
-          const num = parseInt(text.replace(/[^0-9]/g, ''), 10);
-          if (!isNaN(num) && num > 0) {
-            el.textContent = '0';
-            animateCounter(el, num, text.replace(/[0-9]/g, ''));
-          }
-        });
-        statsObserver.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.5 });
+  // Load all frames (sequential + batch progress)
+  function loadFrames() {
+    let i = 0;
 
-  const statsSection = document.getElementById('about');
-  if (statsSection) statsObserver.observe(statsSection);
+    function loadNext() {
+      if (i >= TOTAL_FRAMES) return;
+      const idx = i++;
+      const n   = String(idx + 1).padStart(3, '0');
+      const img = new Image();
+
+      img.onload = () => {
+        loadedCount++;
+        frames[idx] = img;
+
+        const pct = Math.round((loadedCount / TOTAL_FRAMES) * 100);
+        loadText.textContent = '영상 로딩 중... ' + pct + '%';
+
+        // First frame ready — draw it immediately
+        if (idx === 0) {
+          drawFrame(0);
+        }
+
+        // Check if we can hide loader (need first ~20% to start)
+        if (loadedCount >= Math.ceil(TOTAL_FRAMES * 0.2) && !ready) {
+          ready = true;
+          loader.style.opacity = '0';
+          setTimeout(() => { loader.style.display = 'none'; }, 650);
+          startRenderLoop();
+        }
+
+        loadNext();
+      };
+      img.onerror = () => { loadedCount++; loadNext(); };
+      img.src = FRAME_PATH + String(idx + 1).padStart(3, '0') + '.webp';
+    }
+
+    // Load 4 in parallel to speed up
+    for (let j = 0; j < 4; j++) loadNext();
+  }
+
+  // Compute scroll progress (0–1) within the story section
+  function getScrollProgress() {
+    const rect  = story.getBoundingClientRect();
+    const total = story.offsetHeight - window.innerHeight;
+    const scrolled = -rect.top;
+    return Math.max(0, Math.min(1, scrolled / total));
+  }
+
+  // Panel + dot switcher
+  let lastPanelIdx = -1;
+  function updateStoryUI(frameIdx, progress) {
+    // Progress bar
+    progressBar.style.width = (progress * 100) + '%';
+
+    // Frame counter
+    if (frameCount) {
+      frameCount.textContent =
+        String(frameIdx + 1).padStart(3, '0') + ' / ' +
+        String(TOTAL_FRAMES).padStart(3, '0');
+    }
+
+    // Panel: split 80 frames into 4 equal zones
+    const zone = Math.min(3, Math.floor(progress * 4));
+    if (zone !== lastPanelIdx) {
+      panels.forEach((p, i) => {
+        if (!p) return;
+        p.style.opacity = i === zone ? '1' : '0';
+        p.style.transform = i === zone ? 'translateY(0)' : 'translateY(16px)';
+      });
+      dots.forEach((d, i) => {
+        if (!d) return;
+        d.style.background  = i === zone ? 'var(--accent)' : '#57534e';
+        d.style.transform   = i === zone ? 'scale(1.5)'    : 'scale(1)';
+      });
+      lastPanelIdx = zone;
+    }
+  }
+
+  // Render loop with lerp for silky smooth transitions
+  function startRenderLoop() {
+    function loop() {
+      rafId = requestAnimationFrame(loop);
+
+      // Smooth lerp: 0.12 is snappy but not jittery
+      currentFrameF += (targetFrameF - currentFrameF) * 0.12;
+
+      const idx = Math.round(currentFrameF);
+      drawFrame(idx);
+    }
+    loop();
+  }
+
+  // Update target frame on scroll
+  window.addEventListener('scroll', () => {
+    const progress = getScrollProgress();
+    targetFrameF   = progress * (TOTAL_FRAMES - 1);
+    updateStoryUI(Math.round(targetFrameF), progress);
+  }, { passive: true });
+
+  loadFrames();
+})();
 </script>
 
 </body>
