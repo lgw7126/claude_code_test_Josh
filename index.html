@@ -498,7 +498,7 @@
 
 
 <!-- ════════════════════════════════════════
-     SCROLL STORY — VIDEO SCRUBBING
+     SCROLL STORY — WEBP FRAME SCRUBBING
 ════════════════════════════════════════ -->
 <section id="scroll-story" style="height: 550vh; position: relative;">
   <div id="scroll-story-sticky">
@@ -506,18 +506,7 @@
     <!-- Progress bar -->
     <div id="scroll-progress-bar"></div>
 
-    <!-- Hidden video source for scrubbing -->
-    <video
-      id="scrub-video"
-      src="assets/hero.mp4"
-      preload="auto"
-      muted
-      playsinline
-      style="display:none;"
-      aria-hidden="true"
-    ></video>
-
-    <!-- Canvas — frames drawn here from video -->
+    <!-- Canvas for WebP frames -->
     <canvas id="scroll-canvas"></canvas>
 
     <!-- Dark overlay -->
@@ -530,7 +519,7 @@
         <div style="width:6px;height:6px;border-radius:50%;background:var(--accent);animation:dotPulse 1.2s ease-in-out 0.2s infinite;"></div>
         <div style="width:6px;height:6px;border-radius:50%;background:var(--accent);animation:dotPulse 1.2s ease-in-out 0.4s infinite;"></div>
       </div>
-      <span id="load-progress-text" style="font-size:12px;color:#78716c;letter-spacing:0.08em;font-family:'Outfit',sans-serif;">영상 로딩 중...</span>
+      <span id="load-progress-text" style="font-size:12px;color:#78716c;letter-spacing:0.08em;font-family:'Outfit',sans-serif;">영상 로딩 중... 0%</span>
     </div>
 
     <!-- Dynamic text panels -->
@@ -582,7 +571,7 @@
         <div id="story-dot-2" style="width:6px;height:6px;border-radius:50%;background:#57534e;transition:all 0.4s var(--ease-spring);"></div>
         <div id="story-dot-3" style="width:6px;height:6px;border-radius:50%;background:#57534e;transition:all 0.4s var(--ease-spring);"></div>
       </div>
-      <span id="story-frame-count" style="font-family:'Outfit',sans-serif;font-size:11px;color:#57534e;letter-spacing:0.06em;writing-mode:vertical-rl;transform:rotate(180deg);margin-top:12px;">0.0s</span>
+      <span id="story-frame-count" style="font-family:'Outfit',sans-serif;font-size:11px;color:#57534e;letter-spacing:0.06em;writing-mode:vertical-rl;transform:rotate(180deg);margin-top:12px;">001 / 080</span>
     </div>
 
   </div>
@@ -1240,6 +1229,10 @@
      SCRIPTS
 ════════════════════════════════════════ -->
 <script>
+// ── Config ──────────────────────────────────
+const TOTAL_FRAMES = 80;
+const FRAME_PATH = 'assets/frames/frame_';
+
 // ── Scroll reveal ────────────────────────────
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(e => {
@@ -1316,66 +1309,84 @@ window.addEventListener('load', () => {
 });
 
 // ════════════════════════════════════════════
-// SCROLL-SCRUB — video.currentTime 스크럽 방식
-// 바이너리 파일 없이 영상 파일 하나로 구동
+// SCROLL-SCRUB — WebP 프레임 애니메이션
 // ════════════════════════════════════════════
 (function() {
-  const video       = document.getElementById('scrub-video');
   const canvas      = document.getElementById('scroll-canvas');
   const ctx         = canvas.getContext('2d');
   const story       = document.getElementById('scroll-story');
   const loader      = document.getElementById('frame-loader');
+  const loadText    = document.getElementById('load-progress-text');
   const progressBar = document.getElementById('scroll-progress-bar');
-  const timeLabel   = document.getElementById('story-frame-count');
+  const frameCount  = document.getElementById('story-frame-count');
 
   const panels = [0,1,2,3].map(i => document.getElementById('story-panel-' + i));
   const dots   = [0,1,2,3].map(i => document.getElementById('story-dot-'   + i));
 
-  let duration    = 0;
-  let ready       = false;
-  let currentTime = 0;   // 실제 그려진 시간 (lerp 대상)
-  let targetTime  = 0;   // 스크롤로 계산된 목표 시간
-  let lastPanelIdx = -1;
+  let frames = new Array(TOTAL_FRAMES).fill(null);
+  let loadedCount = 0;
+  let ready = false;
+  let currentFrameF = 0;
+  let targetFrameF  = 0;
 
-  // ── Canvas 크기 ──
   function resizeCanvas() {
     canvas.width  = window.innerWidth;
     canvas.height = window.innerHeight;
-    if (ready) drawCurrentFrame();
+    if (ready && frames[Math.round(currentFrameF)]) drawFrame(Math.round(currentFrameF));
   }
   window.addEventListener('resize', resizeCanvas, { passive: true });
   resizeCanvas();
 
-  // ── video → canvas 렌더 (cover-fit) ──
-  function drawCurrentFrame() {
-    if (video.readyState < 2) return;
-    const cw = canvas.width,  ch = canvas.height;
-    const vw = video.videoWidth, vh = video.videoHeight;
-    if (!vw || !vh) return;
-    const scale = Math.max(cw / vw, ch / vh);
-    const dw = vw * scale, dh = vh * scale;
+  function drawFrame(idx) {
+    const img = frames[Math.max(0, Math.min(TOTAL_FRAMES - 1, idx))];
+    if (!img || !img.complete || img.naturalWidth === 0) return;
+    const cw = canvas.width, ch = canvas.height;
+    const scale = Math.max(cw / img.naturalWidth, ch / img.naturalHeight);
+    const dw = img.naturalWidth * scale, dh = img.naturalHeight * scale;
     ctx.clearRect(0, 0, cw, ch);
-    ctx.drawImage(video, (cw - dw) / 2, (ch - dh) / 2, dw, dh);
+    ctx.drawImage(img, (cw - dw) / 2, (ch - dh) / 2, dw, dh);
   }
 
-  // ── video.currentTime 변경 → seeked 이벤트 후 캔버스 렌더 ──
-  video.addEventListener('seeked', drawCurrentFrame);
+  function loadFrames() {
+    let i = 0;
+    function loadNext() {
+      if (i >= TOTAL_FRAMES) return;
+      const idx = i++;
+      const img = new Image();
+      img.onload = () => {
+        loadedCount++;
+        frames[idx] = img;
+        const pct = Math.round((loadedCount / TOTAL_FRAMES) * 100);
+        if (loadText) loadText.textContent = '영상 로딩 중... ' + pct + '%';
+        if (idx === 0) drawFrame(0);
+        if (loadedCount >= Math.ceil(TOTAL_FRAMES * 0.2) && !ready) {
+          ready = true;
+          loader.style.opacity = '0';
+          setTimeout(() => { loader.style.display = 'none'; }, 650);
+          startRenderLoop();
+        }
+        loadNext();
+      };
+      img.onerror = () => { loadedCount++; loadNext(); };
+      img.src = FRAME_PATH + String(idx + 1).padStart(3, '0') + '.webp';
+    }
+    for (let j = 0; j < 4; j++) loadNext();
+  }
 
-  // ── 스크롤 진행도 계산 ──
-  function getProgress() {
+  function getScrollProgress() {
     const rect  = story.getBoundingClientRect();
     const total = story.offsetHeight - window.innerHeight;
     return Math.max(0, Math.min(1, -rect.top / total));
   }
 
-  // ── 패널 · 도트 UI 업데이트 ──
-  function updateUI(progress) {
+  let lastPanelIdx = -1;
+  function updateStoryUI(progress) {
     progressBar.style.width = (progress * 100) + '%';
-
-    if (timeLabel) {
-      timeLabel.textContent = (progress * duration).toFixed(1) + 's';
+    if (frameCount) {
+      frameCount.textContent =
+        String(Math.round(progress * (TOTAL_FRAMES - 1)) + 1).padStart(3, '0') +
+        ' / ' + String(TOTAL_FRAMES).padStart(3, '0');
     }
-
     const zone = Math.min(3, Math.floor(progress * 4));
     if (zone === lastPanelIdx) return;
     panels.forEach((p, i) => {
@@ -1391,74 +1402,22 @@ window.addEventListener('load', () => {
     lastPanelIdx = zone;
   }
 
-  // ── RAF 렌더루프 — lerp로 부드러운 seek ──
-  // video.currentTime 변경은 매 프레임 하지 않고, 임계값 이상 차이날 때만
-  const SEEK_THRESHOLD = 0.015; // 초 단위 임계값 (약 0.5 프레임)
-  function renderLoop() {
-    requestAnimationFrame(renderLoop);
-    if (!ready) return;
-
-    // lerp: 0.10 — 스크롤 가속도와 관계없이 부드럽게 추적
-    currentTime += (targetTime - currentTime) * 0.10;
-
-    if (Math.abs(currentTime - video.currentTime) > SEEK_THRESHOLD) {
-      video.currentTime = Math.max(0, Math.min(duration, currentTime));
+  function startRenderLoop() {
+    function loop() {
+      requestAnimationFrame(loop);
+      currentFrameF += (targetFrameF - currentFrameF) * 0.12;
+      drawFrame(Math.round(currentFrameF));
     }
+    loop();
   }
-  renderLoop();
 
-  // ── 스크롤 이벤트 ──
   window.addEventListener('scroll', () => {
-    if (!ready) return;
-    const p = getProgress();
-    targetTime = p * duration;
-    updateUI(p);
+    const progress = getScrollProgress();
+    targetFrameF = progress * (TOTAL_FRAMES - 1);
+    updateStoryUI(progress);
   }, { passive: true });
 
-  // ── 비디오 로드 완료 후 준비 ──
-  function onVideoReady() {
-    if (ready) return;
-    duration = video.duration || 10;
-    ready = true;
-
-    // 로더 페이드아웃
-    loader.style.opacity = '0';
-    setTimeout(() => { loader.style.display = 'none'; }, 600);
-
-    // 첫 프레임 렌더
-    video.currentTime = 0;
-    currentTime = 0;
-    targetTime  = 0;
-
-    // 이미 스크롤된 상태라면 즉시 동기화
-    const p = getProgress();
-    if (p > 0) {
-      targetTime  = p * duration;
-      currentTime = targetTime;
-      video.currentTime = targetTime;
-      updateUI(p);
-    }
-  }
-
-  // readyState 이미 충분하면 즉시 실행
-  if (video.readyState >= 3) {
-    onVideoReady();
-  } else {
-    video.addEventListener('canplaythrough', onVideoReady, { once: true });
-    // 느린 네트워크 대비 loadeddata(readyState≥2)에서도 시작
-    video.addEventListener('loadeddata', () => {
-      if (!ready && video.readyState >= 2) onVideoReady();
-    }, { once: true });
-  }
-
-  // 비디오 파일 없을 경우 로더 숨김 (graceful fallback)
-  video.addEventListener('error', () => {
-    loader.style.opacity = '0';
-    setTimeout(() => { loader.style.display = 'none'; }, 400);
-    // 배경 그라데이션 fallback
-    canvas.style.background =
-      'linear-gradient(135deg,#1c1917 0%,#0c0a09 50%,#1c1917 100%)';
-  });
+  loadFrames();
 })();
 </script>
 
