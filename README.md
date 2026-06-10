@@ -1,1 +1,11 @@
-IyDsm5Trr7zrnbwg7J207Yq47JuQ7J6FIOyEoOuKlAoKPiBb7JiI7JSI7IiYIOuTpOuvuF0oaHR0cHM6Ly9sZ3c3MTI2LmdpdGh1Yi5pby9jbGF1ZGVfY29kZV90ZXN0X0pvc2gvKQoK4pqhIOy2lOqzvCDrp4jrk6Ag66W07IS47J6FIOyImOuPhOydhCDsl4bsnYQg7JeG7J2EIO2VoCDspp
+# 루미노 인테리어 웹사이트
+
+## 라이브 링크 (클릭하면 바로 열려요!)
+https://lgw7126.github.io/claude_code_test_Josh/
+
+---
+
+## 포함된 기능
+- 히어로 섹션 영상 배경
+- 스크롤 애니메이션 (WebP 80프레임)
+- 서비스 / 포트폴리오 / 프로세스 / 후기 / 상담 폼
